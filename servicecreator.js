@@ -41,17 +41,20 @@ function createIdentityUserExposerService(execlib, ParentServicePack) {
   };
 
   IdentityUserExposerService.prototype.onEntryPointService = function () {
-    try {
     taskRegistry.run('getIn', {
-      ipaddress: this.entrypoint.ipaddress,
+      ipaddress: this.entrypoint.address,
       port: this.entrypoint.port,
       identity: this.identity,
-      cb: this.setOuterSink.bind(this)
+      cb: this.onGetIn.bind(this),
+      propertyhash: {nochannels: true}
     });
-    } catch (e) {
-      console.error(e.stack);
-      console.error(e);
+  };
+
+  IdentityUserExposerService.prototype.onGetIn = function (getinobj) {
+    if (getinobj.task) {
+      getinobj.task.destroy();
     }
+    this.setOuterSink(getinobj.sink);
   };
   
   return IdentityUserExposerService;
