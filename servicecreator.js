@@ -51,6 +51,9 @@ function createIdentityUserExposerService(execlib, ParentServicePack) {
   };
 
   IdentityUserExposerService.prototype.onGetIn = function (getinobj) {
+    if (!getinobj) {
+      return;
+    }
     if (getinobj.task) {
       getinobj.task.destroy();
     }
