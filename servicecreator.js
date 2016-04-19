@@ -15,12 +15,14 @@ function createIdentityUserExposerService(execlib, ParentServicePack) {
   }
 
   function IdentityUserExposerService(prophash) {
+    /*
     if (!prophash.identity) {
       throw new lib.Error('NO_IDENTITY_IN_PROPERTYHASH', 'Constructor misses the identity field in propertyhash');
     }
     if (!prophash.entrypoint) {
       throw new lib.Error('NO_ENTRYPOINT_IN_PROPERTYHASH', 'Constructor misses the entrypoint field in propertyhash');
     }
+    */
     ParentService.call(this, prophash);
     this.identity = prophash.identity;
     this.entrypoint = prophash.entrypoint;
@@ -58,6 +60,15 @@ function createIdentityUserExposerService(execlib, ParentServicePack) {
       getinobj.task.destroy();
     }
     this.setOuterSink(getinobj.sink);
+  };
+
+  IdentityUserExposerService.prototype.propertyHashDescriptor = {
+    identity: {
+      type: 'object'
+    },
+    entrypoint: {
+      type: 'object'
+    }
   };
   
   return IdentityUserExposerService;
