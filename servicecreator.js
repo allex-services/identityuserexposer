@@ -1,11 +1,10 @@
-function createIdentityUserExposerService(execlib, ParentServicePack) {
+function createIdentityUserExposerService(execlib, ParentService) {
   'use strict';
   var lib = execlib.lib,
     q = lib.q,
     execSuite = execlib.execSuite,
     registry = execSuite.registry,
-    taskRegistry = execSuite.taskRegistry,
-    ParentService = ParentServicePack.Service;
+    taskRegistry = execSuite.taskRegistry;
 
   function factoryCreator(parentFactory) {
     return {
