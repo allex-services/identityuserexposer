@@ -36,12 +36,15 @@ function createIdentityUserExposerService(execlib, ParentService) {
   };
 
   IdentityUserExposerService.prototype.obtainOuterSink = function () {
-    registry.register('allex_entrypointservice').then(
+    registry.registerClientSide('allex_entrypointservice').then(
       this.onEntryPointService.bind(this)
     );
   };
 
   IdentityUserExposerService.prototype.onEntryPointService = function () {
+    if (!this.destroyed) {
+      return;
+    }
     taskRegistry.run('getIn', {
       ipaddress: this.entrypoint.address,
       port: this.entrypoint.port,
