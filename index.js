@@ -3,10 +3,10 @@ function createServicePack(execlib) {
 
   return {
     service: {
-      dependencies: ['allex:userexposer']
+      dependencies: ['allex_userexposerservice']
     },
     sinkmap: {
-      dependencies: ['allex:userexposer']
+      dependencies: ['allex_userexposerservice']
     }
   };
 }
