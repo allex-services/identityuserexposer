@@ -1,6 +1,6 @@
 {
   "name": "allex_identityuserexposerservice",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "IdentityUserExposerService",
   "main": "index.js",
   "scripts": {
